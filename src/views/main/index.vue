@@ -1,10 +1,10 @@
 <script setup>
-import { isMobileTerminal } from './utils/flexible'
+import navigationVue from './components/navigation/index.vue'
 </script>
 
 <template>
   <div>
-    <router-view />
+    <navigation-vue />
   </div>
 </template>
 
