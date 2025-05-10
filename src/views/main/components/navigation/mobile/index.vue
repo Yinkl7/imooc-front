@@ -49,6 +49,11 @@ watch(currentCategoryIndex, (value) => {
     width: `${width}px`
   }
 })
+
+const showPopup = ref(false)
+const handleIconClick = () => {
+  showPopup.value = true
+}
 </script>
 
 <template>
@@ -66,6 +71,7 @@ watch(currentCategoryIndex, (value) => {
       <!-- 汉堡按钮 -->
       <li
         class="fixed top-0 right-[-1px] h-4 px-1 flex items-center bg-white z-20 shadow-l-white"
+        @click="handleIconClick"
       >
         <m-svg-icon class="w-1.5 h-1.5" name="hamburger"></m-svg-icon>
       </li>
@@ -81,5 +87,9 @@ watch(currentCategoryIndex, (value) => {
         {{ item.name }}
       </li>
     </ul>
+
+    <m-popup v-model="showPopup">
+      <div>内容11111</div>
+    </m-popup>
   </div>
 </template>
