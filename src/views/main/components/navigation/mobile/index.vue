@@ -1,6 +1,7 @@
 <script setup>
 import { onBeforeUpdate, ref, watch } from 'vue'
 import { useScroll } from '@vueuse/core'
+import MenuCpn from '@/views/main/components/menu/index.vue'
 defineProps({
   data: {
     type: Array,
@@ -30,6 +31,7 @@ const currentCategoryIndex = ref(0)
 
 const handleItemClick = (index) => {
   currentCategoryIndex.value = index
+  showPopup.value = false
 }
 
 const categoryRef = ref()
@@ -89,7 +91,7 @@ const handleIconClick = () => {
     </ul>
 
     <m-popup v-model="showPopup">
-      <div>内容11111</div>
+      <menu-cpn :categorys="data" @clickCategoryItem="handleItemClick" />
     </m-popup>
   </div>
 </template>
