@@ -5,7 +5,7 @@ import floatingCpn from './components/floating.vue'
 </script>
 
 <template>
-  <div class="h-screen">
+  <div class="h-screen overflow-x-hidden">
     <header-cpn class="h-header"></header-cpn>
     <main-cpn class="h-main"></main-cpn>
     <floating-cpn></floating-cpn>

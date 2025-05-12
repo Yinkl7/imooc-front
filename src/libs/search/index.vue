@@ -22,8 +22,8 @@ const EMIT_BLUR = 'blur'
  * 6. 事件处理
  */
 
-import { ref } from 'vue'
-import { useVModel, onClickOutside, useDebounce } from '@vueuse/core'
+import { ref, watch } from 'vue'
+import { useVModel, onClickOutside, useDebounceFn } from '@vueuse/core'
 
 const inputFocus = ref(false)
 const searchRef = ref()
@@ -45,9 +45,9 @@ const emits = defineEmits([
 ])
 
 const inputValue = useVModel(props, 'modelValue', emits)
-const inputFn = useDebounce((val) => {
+const inputFn = useDebounceFn((val) => {
   emits(EMIT_INPUT, val)
-})
+}, 200)
 // 用户输入
 watch(inputValue, inputFn)
 

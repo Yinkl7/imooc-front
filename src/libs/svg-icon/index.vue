@@ -9,7 +9,7 @@ const props = defineProps({
   color: {
     type: String
   },
-  className: {
+  fillClass: {
     type: String
   }
 })
@@ -21,7 +21,7 @@ const symbolId = computed(() => {
 
 <template>
   <svg aria-hidden="true">
-    <use :xlink:href="symbolId" :class="className" :fill="color" />
+    <use :xlink:href="symbolId" :class="fillClass" :fill="color" />
   </svg>
 </template>
 
