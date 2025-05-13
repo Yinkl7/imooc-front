@@ -1,11 +1,4 @@
 <script setup>
-const props = defineProps({
-  categorys: {
-    type: Array,
-    required: true
-  }
-})
-
 defineEmits(['clickCategoryItem'])
 </script>
 
@@ -14,7 +7,7 @@ defineEmits(['clickCategoryItem'])
     <h2 class="text-xl text-zinc-900 font-bold mb-2 px-1">所有分类</h2>
     <ul class="overflow-y-scroll">
       <li
-        v-for="(item, index) in categorys"
+        v-for="(item, index) in $store.getter.categoryList"
         :key="item.id"
         class="text-lg text-zinc-900 px-1 py-1.5 duration-100 active:bg-zinc-100"
         @click="$emit('clickCategoryItem', index)"

@@ -2,12 +2,6 @@
 import { onBeforeUpdate, ref, watch } from 'vue'
 import { useScroll } from '@vueuse/core'
 import MenuCpn from '@/views/main/components/menu/index.vue'
-defineProps({
-  data: {
-    type: Array,
-    required: true
-  }
-})
 
 const slideTarget = ref()
 
@@ -79,7 +73,7 @@ const handleIconClick = () => {
       </li>
       <!-- items -->
       <li
-        v-for="(item, index) in data"
+        v-for="(item, index) in $store.getters.categoryList"
         :key="item.id"
         class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-2.5"
         :ref="getItemList"
