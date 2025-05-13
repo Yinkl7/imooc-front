@@ -21,7 +21,7 @@ const typeArr = [
 </script>
 
 <template>
-  <m-popover>
+  <m-popover placement="bottom-left">
     <template #reference>
       <m-svg-icon
         name="theme-light"
