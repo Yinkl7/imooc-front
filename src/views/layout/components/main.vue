@@ -1,7 +1,9 @@
 <script setup></script>
 
 <template>
-  <div>我是main内容</div>
+  <div>
+    <router-view />
+  </div>
 </template>
 
 <style scoped></style>
