@@ -4,9 +4,10 @@ import router from './router'
 import App from './App.vue'
 import store from '@/store/index.js'
 import { useRem } from '@/utils/flexible.js'
+import useTheme from '@/utils/theme'
 import libs from './libs'
 import 'virtual:svg-icons-register'
 
 useRem()
-
+useTheme()
 createApp(App).use(router).use(store).use(libs).mount('#app')

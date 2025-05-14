@@ -1,6 +1,6 @@
 module.exports = {
   // tailwind 应用
-  darkModel: 'class',
+  // darkModel: 'class',
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -12,7 +12,8 @@ module.exports = {
         xl: ['0.65rem', '0.75rem']
       },
       boxShadow: {
-        'l-white': '-10px 0 10px white'
+        'l-white': '-10px 0 10px white',
+        'l-zinc': '-10px 0 10px #18181b'
       },
       height: {
         header: '72px',
