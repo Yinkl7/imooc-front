@@ -28,7 +28,6 @@ const themeClick = (item) => {
 }
 
 const themeSvg = computed(() => {
-  console.log('themeType=== ', store.getters.themeType)
   const theme = typeArr.find((item) => item.type === store.getters.themeType)
   return theme?.icon
 })

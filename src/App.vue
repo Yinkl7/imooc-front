@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div>
+  <div class="fixed h-screen w-screen top-0 left-0">
     <router-view />
   </div>
 </template>
