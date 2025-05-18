@@ -16,6 +16,7 @@ const goToHome = () => {
   <div class="w-full bg-white border-b border-b-zinc-200 px-2 py-1">
     <div class="flex items-center">
       <img
+        v-lazy
         class="w-4 mr-2 cursor-pointer"
         src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"
         alt=""

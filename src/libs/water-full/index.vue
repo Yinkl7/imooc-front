@@ -75,10 +75,6 @@ const useColumnWidth = () => {
     (containerWidth.value - columnSpacingTotal.value) / props.column
 }
 
-onMounted(() => {
-  useColumnWidth()
-})
-
 // 预加载图片
 let itemsHeight = []
 const waitImgComplate = () => {
@@ -115,7 +111,6 @@ const useItemLocation = () => {
     item._style = {}
     item._style.left = getItemLeft()
     item._style.top = getItemTop()
-    console.log(item._style)
 
     // 增加对应的高度
     increaseHeightColumn(index)
@@ -142,7 +137,7 @@ const increaseHeightColumn = (index) => {
 
 watch(
   () => props.data,
-  (newVal) => {
+  () => {
     nextTick(() => {
       // 所有元素都没有 _style时
       const resetColumnHeight = props.data.every((item) => !item._style)
@@ -184,6 +179,10 @@ watch(
     }
   }
 )
+
+onMounted(() => {
+  useColumnWidth()
+})
 
 onUnmounted(() => {
   props.data.forEach((item) => {

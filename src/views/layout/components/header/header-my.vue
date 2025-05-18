@@ -27,7 +27,7 @@ const typeArr = [
         class="w-4 relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 hover:bg-zinc-100"
       >
         <!-- 头像 -->
-        <img class="w-3 h-3 rounded-sm mr-0.5" :src="icon" alt="" />
+        <img v-lazy class="w-3 h-3 rounded-sm mr-0.5" :src="icon" alt="" />
         <!-- 下箭头 -->
         <m-svg-icon
           class="w-1.5 h-1.5"

@@ -50,7 +50,6 @@ export const getMaxHeight = (columnHeightObj) => {
 
 export const getMinHeightColumn = (columnHeightObj) => {
   const minHeight = getMinHeight(columnHeightObj)
-  console.log('getMinHeightColumn== ', minHeight)
   return Object.keys(columnHeightObj).find((key) => {
     return columnHeightObj[key] === minHeight
   })

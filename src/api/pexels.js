@@ -1,8 +1,8 @@
 import request from '@/utils/service'
 
-export const getPexelsList = (data) => {
+export const getPexelsList = (params) => {
   return request({
     url: '/pexels/list',
-    data 
+    params
   })
 }
