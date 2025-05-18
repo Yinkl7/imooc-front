@@ -1,8 +1,9 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { getPexelsList } from '@/api/pexels'
 import itemVue from './item.vue'
 import { isMobileTerminal } from '@/utils/flexible'
+import { useStore } from 'vuex'
 
 const isLoading = ref(false)
 const isFinished = ref(false)
@@ -36,6 +37,24 @@ const getPexelsData = async () => {
 
   isLoading.value = false
 }
+
+const resetQuery = (newQuery) => {
+  query = { ...query, ...newQuery }
+  pexelsList.value = []
+  isFinished.value = false
+}
+
+const store = useStore()
+
+watch(
+  () => store.getters.currentCategory,
+  (currentCategory) => {
+    resetQuery({
+      page: 1,
+      categoryId: currentCategory.id
+    })
+  }
+)
 </script>
 
 <template>

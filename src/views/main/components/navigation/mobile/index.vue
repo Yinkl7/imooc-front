@@ -23,8 +23,10 @@ onBeforeUpdate(() => {
 
 const currentCategoryIndex = ref(0)
 
-const handleItemClick = (index) => {
-  currentCategoryIndex.value = index
+const store = useStore()
+
+const handleItemClick = (item) => {
+  store.commit('app/changeCurrentCategoty', item)
   showPopup.value = false
 }
 
@@ -77,8 +79,8 @@ const handleIconClick = () => {
         :key="item.id"
         class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-2.5"
         :ref="getItemList"
-        @click="handleItemClick(index)"
-        :class="{ 'text-white': currentCategoryIndex === index }"
+        @click="handleItemClick(item)"
+        :class="{ 'text-white': $store.getters.currentCategoryIndex === index }"
       >
         {{ item.name }}
       </li>

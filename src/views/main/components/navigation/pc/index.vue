@@ -1,9 +1,16 @@
 <script setup>
 import { ref } from 'vue'
+import { useStore } from 'vuex'
 const isFold = ref(false)
 
 const handleIconClick = () => {
   isFold.value = !isFold.value
+}
+
+const store = useStore()
+
+const handleItemClick = (item) => {
+  store.commit('app/changeCurrentCategoty', item)
 }
 </script>
 
@@ -30,6 +37,10 @@ const handleIconClick = () => {
         v-for="(item, index) in $store.getters.categoryList"
         :key="item.id"
         class="shrink-0 px-1.5 py-0 z-10 duration-200 text-zinc-900 font-bold h-4 leading-4 cursor-pointer text-base hover:bg-zinc-200 rounded mr-1 mb-1"
+        :class="{
+          'bg-zinc-200': $store.getters.currentCategoryIndex === index
+        }"
+        @click="handleItemClick(item)"
       >
         {{ item.name }}
       </li>
