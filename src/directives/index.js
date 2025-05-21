@@ -2,8 +2,7 @@ import lazy from './modules/lazy'
 
 export default {
   install(app) {
-    app.directive('lazy', lazy)
-
+    // app.directive('lazy', lazy)
     const directives = import.meta.glob('./modules/*.js', { eager: true })
     for (const [key, value] of Object.entries(directives)) {
       const arr = key.split('/')

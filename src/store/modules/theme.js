@@ -8,8 +8,8 @@ export default {
     }
   },
   mutations: {
-    changeThemeType(store, newVal) {
-      store.themeType = newVal
+    changeThemeType(state, newVal) {
+      state.themeType = newVal
     }
   }
 }

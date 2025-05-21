@@ -4,18 +4,20 @@ import category from './modules/category'
 import theme from './modules/theme'
 import app from './modules/app'
 import createPersistedState from 'vuex-persistedstate'
+import search from './modules/search'
 
 const store = createStore({
   getters,
   modules: {
     category,
     theme,
-    app
+    app,
+    search
   },
   plugins: [
     createPersistedState({
       key: 'vuex-persist', // 存储的键名
-      paths: ['category', 'theme'] // 需要持久化的状态路径
+      paths: ['category', 'theme', 'search'] // 需要持久化的状态路径
     })
   ]
 })

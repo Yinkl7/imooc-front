@@ -6,3 +6,12 @@ export const getPexelsList = (params) => {
     params
   })
 }
+
+export const getHint = (q) => {
+  return request({
+    url: '/pexels/hint',
+    params: {
+      q
+    }
+  })
+}
