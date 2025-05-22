@@ -124,7 +124,6 @@ onClickOutside(searchRef, () => {
         v-show="inputFocus"
         class="max-h-[368px] w-full text-base overflow-auto bg-white absolute z-20 left-0 top-[56px] p-2 rounded border border-zinc-200 duration-200 hover:shadow-2xl"
       >
-        {{ inputFocus }}
         <slot name="contentData" />
       </div>
     </Transition>

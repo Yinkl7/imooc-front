@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { useStore } from 'vuex'
+import { confirm } from '@/libs'
 
 const emits = defineEmits(['itemClick'])
 
 const store = useStore()
 
 const onDeleteAllItem = () => {
-  store.commit('search/clearHistory')
+  confirm('要删除所有历史记录吗？').then(() => {
+    store.commit('search/clearHistory')
+  })
 }
 
 const onItemClick = (item) => {
