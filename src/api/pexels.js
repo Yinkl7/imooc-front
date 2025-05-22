@@ -15,3 +15,9 @@ export const getHint = (q) => {
     }
   })
 }
+
+export const getThemes = () => {
+  return request({
+    url: '/pexels/themes'
+  })
+}

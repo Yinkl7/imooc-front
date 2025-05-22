@@ -10,5 +10,6 @@ export default {
       return item.id === getters.currentCategory.id
     })
   },
-  historys: (state) => state.search.historys
+  historys: (state) => state.search.historys,
+  searchText: (state) => state.app.searchText
 }

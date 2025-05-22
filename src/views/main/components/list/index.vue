@@ -55,6 +55,16 @@ watch(
     })
   }
 )
+
+watch(
+  () => store.getters.searchText,
+  (val) => {
+    resetQuery({
+      page: 1,
+      searchText: val
+    })
+  }
+)
 </script>
 
 <template>

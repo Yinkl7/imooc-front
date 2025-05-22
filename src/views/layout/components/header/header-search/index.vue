@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import hintVue from './hint.vue'
 import historyVue from './history.vue'
+import themeVue from './theme.vue'
 import { useStore } from 'vuex'
 const searchVal = ref('')
 
@@ -10,6 +11,7 @@ const handleItemClick = (item) => {
   searchVal.value = item
   if (item) {
     store.commit('search/addHistory', item)
+    store.commit('app/changeSearchText', item)
   }
 }
 </script>
@@ -33,6 +35,8 @@ const handleItemClick = (item) => {
             v-show="!searchVal"
             @itemClick="handleItemClick"
           ></history-vue>
+
+          <theme-vue v-show="!searchVal"></theme-vue>
         </div>
       </template>
     </m-search>
