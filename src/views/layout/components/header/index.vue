@@ -17,7 +17,7 @@ const goToHome = () => {
     <div class="flex items-center">
       <img
         v-lazy
-        class="w-4 mr-2 cursor-pointer"
+        class="w-4 mr-2 cursor-pointer guide-home"
         src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"
         alt=""
         @click="goToHome"

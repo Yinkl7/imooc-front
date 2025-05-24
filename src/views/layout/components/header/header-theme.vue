@@ -38,7 +38,7 @@ const themeSvg = computed(() => {
     <template #reference>
       <m-svg-icon
         :name="themeSvg"
-        class="w-4 h-4 p-1 cursor-pointer rounded-sm duration-200 outline-none hover:bg-zinc-200 dark:hover:bg-zinx-900"
+        class="w-4 h-4 p-1 cursor-pointer rounded-sm duration-200 outline-none hover:bg-zinc-200 dark:hover:bg-zinx-900 guide-theme"
         fillClass="fill-zinc-900 dark:fill-zinc-300"
       ></m-svg-icon>
     </template>

@@ -19,6 +19,7 @@ const handleItemClick = (item) => {
 <template>
   <div class="w-full">
     <m-search
+      class="guide-search"
       v-model="searchVal"
       @search="handleItemClick"
       @clear="handleItemClick"

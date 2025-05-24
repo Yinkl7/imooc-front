@@ -24,7 +24,7 @@ const typeArr = [
   <m-popover class="flex items-center" placement="bottom-left">
     <template #reference>
       <div
-        class="w-4 relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 hover:bg-zinc-100"
+        class="w-4 relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 hover:bg-zinc-100 guide-my"
       >
         <!-- 头像 -->
         <img v-lazy class="w-3 h-3 rounded-sm mr-0.5" :src="icon" alt="" />
