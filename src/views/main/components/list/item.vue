@@ -1,5 +1,9 @@
 <script setup>
 import { randomRGB } from '@/utils/color'
+import { saveAs } from 'file-saver'
+import { message } from '@/libs/index'
+import { useFullscreen } from '@vueuse/core'
+import { ref } from 'vue'
 
 const props = defineProps({
   data: {
@@ -10,6 +14,17 @@ const props = defineProps({
     type: Number
   }
 })
+
+const handleDownload = () => {
+  message('success', '图片开始下载')
+  setTimeout(() => {
+    saveAs(props.data.photoDownLink)
+  }, 100)
+}
+
+const imgTarget = ref(null)
+
+const { enter: onImgFullScreen } = useFullscreen(imgTarget)
 </script>
 
 <template>
@@ -20,6 +35,7 @@ const props = defineProps({
     >
       <!-- 图片 -->
       <img
+        ref="imgTarget"
         v-lazy
         class="w-full rounded bg-transparent"
         :src="data.photo"
@@ -33,6 +49,7 @@ const props = defineProps({
         <!-- 按钮 -->
         <m-button class="absolute top-1.5 left-1.5">分享</m-button>
 
+        <!-- 点赞 -->
         <m-button
           class="absolute top-1.5 right-1.5"
           type="info"
@@ -40,18 +57,22 @@ const props = defineProps({
           iconClass="fill-zinc-900 dark:fill-zinc-200"
         />
 
+        <!-- 下载 -->
         <m-button
           class="absolute left-1.5 bottom-1.5 bg-zinc-100/70"
           type="info"
           icon="download"
           iconClass="fill-zinc-900 dark:fill-zinc-200"
+          @click="handleDownload"
         />
 
+        <!-- 全屏 -->
         <m-button
           class="absolute right-1.5 bottom-1.5 bg-zinc-100/70"
           type="info"
           icon="full"
           iconClass="fill-zinc-900 dark:fill-zinc-200"
+          @click="onImgFullScreen"
         />
       </div>
     </div>
