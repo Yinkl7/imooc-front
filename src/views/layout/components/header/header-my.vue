@@ -1,5 +1,6 @@
 <script setup>
 import icon from '@/assets/images/icon.jpg'
+import { useRouter } from 'vue-router'
 
 const typeArr = [
   {
@@ -18,12 +19,19 @@ const typeArr = [
     path: '/profile'
   }
 ]
+
+const router = useRouter()
+// 跳转到登录
+const handleToLogin = () => {
+  router.push('/login')
+}
 </script>
 
 <template>
   <m-popover class="flex items-center" placement="bottom-left">
     <template #reference>
       <div
+        v-if="false"
         class="w-4 relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 hover:bg-zinc-100 guide-my"
       >
         <!-- 头像 -->
@@ -39,6 +47,15 @@ const typeArr = [
           class="w-1.5 h-1.5 absolute right-[16px] bottom-0"
           name="vip"
         />
+      </div>
+      <div v-else>
+        <m-button
+          class="guide-my"
+          icon="profile"
+          iconColor="#fff"
+          @click="handleToLogin"
+        >
+        </m-button>
       </div>
     </template>
 
