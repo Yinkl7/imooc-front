@@ -11,11 +11,13 @@ import headerVue from '../components/header.vue'
 import { validateUserName, validatePassword } from '../validate'
 
 import sliderCaptcha from './slider-captcha.vue'
+import { LOGIN_TYPE_USERNAME } from '../../../constants'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
 const isSliderCaptchaVisible = ref(false)
 
 const handleLoginHandler = () => {
-  console.log('触发登录')
   isSliderCaptchaVisible.value = true
 }
 
@@ -23,7 +25,34 @@ const handleCaptchaSuccess = () => {
   isSliderCaptchaVisible.value = false
   //
   console.log('执行登录操作')
+  handleLogin()
 }
+
+const loading = ref(false)
+
+const store = useStore()
+
+const router = useRouter()
+
+const handleLogin = async () => {
+  loading.value = true
+
+  try {
+    await store.dispatch('user/login', {
+      ...loginForm.value,
+      loginType: LOGIN_TYPE_USERNAME
+    })
+  } finally {
+    loading.value = false
+  }
+
+  router.push('/')
+}
+
+const loginForm = ref({
+  username: '',
+  password: ''
+})
 </script>
 
 <template>
@@ -50,6 +79,7 @@ const handleCaptchaSuccess = () => {
           placeholder="用户名"
           autocomplete="on"
           :rules="validateUserName"
+          v-model="loginForm.username"
         />
         <vee-error-message
           class="text-sm text-red-600 block mt-0.5 text-left"
@@ -63,6 +93,7 @@ const handleCaptchaSuccess = () => {
           placeholder="密码"
           autocomplete="on"
           :rules="validatePassword"
+          v-model="loginForm.password"
         />
         <vee-error-message
           class="text-sm text-red-600 block mt-0.5 text-left"
@@ -77,7 +108,10 @@ const handleCaptchaSuccess = () => {
           </a>
         </div>
 
-        <m-button class="w-full dark:bg-zinc-900 xl:dark:bg-zinc-800"
+        <m-button
+          class="w-full dark:bg-zinc-900 xl:dark:bg-zinc-800"
+          :loading="loading"
+          :isActiveAnimate="false"
           >登录</m-button
         >
       </vee-form>

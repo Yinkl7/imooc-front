@@ -12,7 +12,7 @@ onMounted(() => {
   captcha = sliderCaptcha({
     id: 'captcha',
     async onSuccess(arr) {
-      console.log('arr==== ', arr)
+      // console.log('arr==== ', arr)
       const res = await getCaptcha({
         behavior: arr
       })
@@ -20,7 +20,7 @@ onMounted(() => {
     },
     onFail() {},
     verify() {
-      console.log('verify=== ')
+      // console.log('verify=== ')
       return true
     }
   })

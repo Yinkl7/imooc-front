@@ -1,6 +1,8 @@
 <script setup>
 import icon from '@/assets/images/icon.jpg'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+import { confirm } from '@/libs/confirm'
 
 const typeArr = [
   {
@@ -16,7 +18,7 @@ const typeArr = [
   {
     name: '退出登录',
     icon: 'logout',
-    path: '/profile'
+    path: ''
   }
 ]
 
@@ -25,13 +27,25 @@ const router = useRouter()
 const handleToLogin = () => {
   router.push('/login')
 }
+
+const store = useStore()
+
+const handleItemClick = (path) => {
+  if (path) {
+    router.push(path)
+    return
+  }
+  confirm('您确定要退出登录吗？').then(() => {
+    store.dispatch('user/logout')
+  })
+}
 </script>
 
 <template>
   <m-popover class="flex items-center" placement="bottom-left">
     <template #reference>
       <div
-        v-if="false"
+        v-if="$store.getters.userInfo.avatar"
         class="w-4 relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 hover:bg-zinc-100 guide-my"
       >
         <!-- 头像 -->
@@ -44,7 +58,8 @@ const handleToLogin = () => {
         />
         <!-- vip 图标 -->
         <m-svg-icon
-          class="w-1.5 h-1.5 absolute right-[16px] bottom-0"
+          v-if="$store.getters.userInfo.vipLevel"
+          class="w-1.5 h-1.5 absolute right-[22px] bottom-0"
           name="vip"
         />
       </div>
@@ -59,11 +74,12 @@ const handleToLogin = () => {
       </div>
     </template>
 
-    <div class="w-[140px] overflow-hidden">
+    <div v-if="$store.getters.token" class="w-[140px] overflow-hidden">
       <div
         class="flex items-center p-1 cursor-pointer rounded hover:bg-zinc-100/60"
         v-for="item in typeArr"
         :key="item.type"
+        @click="handleItemClick(item.path)"
       >
         <m-svg-icon
           :name="item.icon"

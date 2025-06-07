@@ -7,3 +7,17 @@ export const getCaptcha = (data) => {
     data
   })
 }
+
+export const loginUser = (data) => {
+  return request({
+    url: '/sys/login',
+    method: 'POST',
+    data
+  })
+}
+
+export const getProfile = () => {
+  return request({
+    url: '/user/profile'
+  })
+}

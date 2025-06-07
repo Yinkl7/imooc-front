@@ -102,3 +102,6 @@ export const DEFAULT_CATEGORY = [
 export const THTME_LIGHT = 'THTME_LIGHT'
 export const THTME_DARK = 'THTME_DARK'
 export const THTME_SYSTEM = 'THTME_SYSTEM'
+
+
+export const LOGIN_TYPE_USERNAME = 'username'
